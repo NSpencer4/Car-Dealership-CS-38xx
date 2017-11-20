@@ -1,0 +1,24 @@
+Lamborghini Aventador
+$295,888
+images/lamborghini/aventador.jpg
+Open
+Lamborghini Huracan
+$193,900
+images/lamborghini/huracan.jpg
+Open
+Lamborghini Gallardo
+$169,850
+images/lamborghini/gallardo.jpg
+Open
+Ferrari F12
+$319,850
+images/ferrari/f12.jpg
+Open
+Ferrari 458
+$234,000
+images/ferrari/458.jpg
+Open
+Ferrari LaFerrari
+$7,200,000
+images/ferrari/laferrari.png
+Open
