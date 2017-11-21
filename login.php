@@ -44,35 +44,17 @@ if (!isset($_SESSION['customers'])) {
         else {
             $cust_name = "";
         }
-        if (isset($_POST['lname'])) {
-            $lname = htmlspecialchars($_POST['lname']);
-        }
-        else {
-            $lname = "";
-        }
         if (isset($_POST['cust_address'])) {
             $cust_address = htmlspecialchars($_POST['cust_address']);
         }
         else {
             $cust_address = "";
         }
-        if (isset($_POST['city'])) {
-            $city = htmlspecialchars($_POST['city']);
+        if (isset($_POST['cust_phone'])) {
+            $cust_phone = htmlspecialchars($_POST['cust_phone']);
         }
         else {
-            $city = "";
-        }
-        if (isset($_POST['state'])) {
-            $state = htmlspecialchars($_POST['state']);
-        }
-        else {
-            $state = "";
-        }
-        if (isset($_POST['zip'])) {
-            $zip = htmlspecialchars($_POST['zip']);
-        }
-        else {
-            $zip = "";
+            $cust_phone = "";
         }
 
 
@@ -125,8 +107,8 @@ if (!isset($_SESSION['customers'])) {
                             echo "<script type='text/javascript'>alert('cust_email unavailable');</script>";
                         }
                         else {  //cust_email available
-                            $encrypt_cust_password = cust_password_hash($cust_password, cust_password_DEFAULT);
-                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $lname, $cust_address, $city, $state, $zip)){
+                            $encrypt_cust_password = password_hash($cust_password, password_DEFAULT);
+                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $lname, $cust_address, $city, $state, $cust_phone)){
                                 $_SESSION['login'] = 'accept_new';
                                 $_SESSION['user'] = $cust_email;
                                 header('Location: login_message.php');
