@@ -1,23 +1,23 @@
 
   <?php 
     
-    function verify_login($db, $username, $password)
+    function verify_login($db, $cust_email, $cust_password)
     {
-      $query = "SELECT password FROM customers WHERE username = :user";
+      $query = "SELECT cust_password FROM customers WHERE cust_email = :cust_email";
       $statement = $db->prepare($query);
-      $statement->bindValue(':user', $username);
+      $statement->bindValue(':cust_email', $cust_email);
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
-      $hash = $result['password'];
-      return password_verify($password, $hash);
+      $hash = $result['cust_password'];
+      return password_verify($cust_password, $hash);
     }
     
-    function existing_username($db, $username)
+    function existing_username($db, $cust_email)
     {
-      $query = "SELECT COUNT(username) FROM customers WHERE username = :username";
+      $query = "SELECT COUNT(cust_email) FROM customers WHERE cust_email = :cust_email";
       $statement = $db->prepare($query);
-      $statement->bindValue(':username', $username);
+      $statement->bindValue(':cust_email', $cust_email);
       $statement->execute();
       $exists = $statement->fetch();
       $statement->closeCursor();

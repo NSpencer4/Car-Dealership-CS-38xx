@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5922a40a-8ebe-49e5-8335-25b9ca3f6bee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login_functions.php" afterPath="$PROJECT_DIR$/login_functions.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,12 +48,12 @@
       <file leaf-file-name="login_functions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login_functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="187">
+              <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
               <folding>
-                <marker date="1511222928991" expanded="true" signature="90:143" ph="SELECT passw... customers" />
-                <marker date="1511222928991" expanded="true" signature="498:562" ph="SELECT COUNT... customers" />
-                <marker date="1511222928991" expanded="true" signature="908:1087" ph="INSERT INTO customers... " />
+                <marker date="1511223295636" expanded="true" signature="97:163" ph="SELECT cust_... customers" />
+                <marker date="1511223295636" expanded="true" signature="538:608" ph="SELECT COUNT... customers" />
+                <marker date="1511223295636" expanded="true" signature="958:1137" ph="INSERT INTO customers... " />
               </folding>
             </state>
           </provider>
@@ -287,7 +286,7 @@
       <workItem from="1507058943285" duration="4705000" />
       <workItem from="1507299922196" duration="117000" />
       <workItem from="1507593648718" duration="6615000" />
-      <workItem from="1511221649229" duration="1285000" />
+      <workItem from="1511221649229" duration="1656000" />
     </task>
     <task id="LOCAL-00001" summary="dbname connection">
       <created>1511222290073</created>
@@ -303,11 +302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511222579107</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="customer db function setup">
+      <created>1511222944485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1511222944485</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82587000" />
+    <option name="totallyTimeSpent" value="82958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="0" />
@@ -342,7 +348,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dbname connection" />
     <MESSAGE value="Login and Logout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login and Logout" />
+    <MESSAGE value="customer db function setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="customer db function setup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -651,12 +658,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login_functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+        <state relative-caret-position="187">
+          <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
-            <marker date="1511222928991" expanded="true" signature="90:143" ph="SELECT passw... customers" />
-            <marker date="1511222928991" expanded="true" signature="498:562" ph="SELECT COUNT... customers" />
-            <marker date="1511222928991" expanded="true" signature="908:1087" ph="INSERT INTO customers... " />
+            <marker date="1511223295636" expanded="true" signature="97:163" ph="SELECT cust_... customers" />
+            <marker date="1511223295636" expanded="true" signature="538:608" ph="SELECT COUNT... customers" />
+            <marker date="1511223295636" expanded="true" signature="958:1137" ph="INSERT INTO customers... " />
           </folding>
         </state>
       </provider>
