@@ -21,13 +21,13 @@ if (!isset($_SESSION['customers'])) {
     <section id="main-container">
         <?php
 
-        require_once("../inc/open_db.php");
+        require_once("open-db.php");
         include ("login_functions.php");
         session_start();
 
         //need to save whether log in is new or existing
         if (isset($_POST['type'])) {
-            $_SESSION['type'] = $_POST['type'];
+            $_SESSION['login-type'] = $_POST['type'];
             unset($_POST['type']);
         }
 
@@ -94,7 +94,7 @@ if (!isset($_SESSION['customers'])) {
         }
 
         //log in existing user
-        if ($_SESSION['type'] == 'existing') {
+        if ($_SESSION['login-type'] == 'existing') {
             if (isset($_POST['username']) && isset($_POST['password'])) {
                 $username = htmlspecialchars($_POST['username']);
                 $password = htmlspecialchars($_POST['password']);
@@ -147,7 +147,7 @@ if (!isset($_SESSION['customers'])) {
         <body>
         <header>
             <?php
-            if ($_SESSION['type'] == "existing"){
+            if ($_SESSION['login-type'] == "existing"){
                 echo "<h1>User Log-In</h1>";
             }
             else {
@@ -161,7 +161,7 @@ if (!isset($_SESSION['customers'])) {
                 <label for="username" class="login_label">Username</label>
                 <?php
                 echo "<input type='text' name='username' value=$username>";
-                if ($_SESSION['type'] == "new") {
+                if ($_SESSION['login-type'] == "new") {
                     echo '<input type="submit" name="check_username" value="Check Username Availability" id="check_button">';
                 }
                 echo '<br/>';
@@ -169,7 +169,7 @@ if (!isset($_SESSION['customers'])) {
                 <label for="password" class="login_label">Password</label>
                 <input type="password" name="password" value=""><br />
                 <?php
-                if ($_SESSION['type'] == "new"){
+                if ($_SESSION['login-type'] == "new"){
                     echo "<label for='password2' class='login_label'>Retype password</label>";
                     echo "<input type='password' name='password2' value=''><br /><br />";
 
