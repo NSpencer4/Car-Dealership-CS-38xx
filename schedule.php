@@ -22,7 +22,7 @@ if (!isset($_SESSION['customers'])) {
         <?php
         if (!isset($_SESSION['login-type'])) {
             echo "You are not logged in. Please login and try again. Redirecting to the homepage in 3 seconds.";
-            header( "refresh:3; url=index.php" );
+            header( "refresh:3; url=login_start.php" );
         } else {
             echo "<h2>Scheduling Page</h2>";
             echo "<p>";
