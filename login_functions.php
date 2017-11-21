@@ -32,7 +32,7 @@
       $statement->bindValue(':cust_password', $cust_password);
       $statement->bindValue(':cust_name', $cust_name);
       $statement->bindValue(':cust_address', $cust_address);
-      $statement->bindValue(':$cust_phone', $cust_phone);
+      $statement->bindValue(':cust_phone', $cust_phone);
       $success = $statement->execute();
       $statement->closeCursor();     
       return $success;
