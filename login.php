@@ -31,18 +31,18 @@ if (!isset($_SESSION['customers'])) {
             unset($_POST['type']);
         }
 
-        //store username and other info
-        if (isset($_POST['username'])) {
-            $username = htmlspecialchars($_POST['username']);
+        //store cust_email and other info
+        if (isset($_POST['cust_email'])) {
+            $cust_email = htmlspecialchars($_POST['cust_email']);
         }
         else {
-            $username = "";
+            $cust_email = "";
         }
-        if (isset($_POST['fname'])) {
-            $fname = htmlspecialchars($_POST['fname']);
+        if (isset($_POST['cust_name'])) {
+            $cust_name = htmlspecialchars($_POST['cust_name']);
         }
         else {
-            $fname = "";
+            $cust_name = "";
         }
         if (isset($_POST['lname'])) {
             $lname = htmlspecialchars($_POST['lname']);
@@ -50,11 +50,11 @@ if (!isset($_SESSION['customers'])) {
         else {
             $lname = "";
         }
-        if (isset($_POST['address'])) {
-            $address = htmlspecialchars($_POST['address']);
+        if (isset($_POST['cust_address'])) {
+            $cust_address = htmlspecialchars($_POST['cust_address']);
         }
         else {
-            $address = "";
+            $cust_address = "";
         }
         if (isset($_POST['city'])) {
             $city = htmlspecialchars($_POST['city']);
@@ -77,17 +77,17 @@ if (!isset($_SESSION['customers'])) {
 
 
 
-        //check username availability
-        if (isset($_POST['check_username']) && isset($_POST['username'])) {
-            $check = true;  //will need to know if username needs to be put back
-            if (existing_username($db, $username)) {
-                echo "<script type='text/javascript'>alert('Username unavailable.');</script>";
+        //check cust_email availability
+        if (isset($_POST['check_cust_email']) && isset($_POST['cust_email'])) {
+            $check = true;  //will need to know if cust_email needs to be put back
+            if (existing_cust_email($db, $cust_email)) {
+                echo "<script type='text/javascript'>alert('cust_email unavailable.');</script>";
             }
             else {
-                echo "<script type='text/javascript'>alert('Username is available.');</script>";
+                echo "<script type='text/javascript'>alert('cust_email is available.');</script>";
             }
-            unset($_POST['check_username']);
-            unset($_POST['username']);
+            unset($_POST['check_cust_email']);
+            unset($_POST['cust_email']);
         }
         else {
             $check = false; //no name in the input box
@@ -95,12 +95,12 @@ if (!isset($_SESSION['customers'])) {
 
         //log in existing user
         if ($_SESSION['login-type'] == 'existing') {
-            if (isset($_POST['username']) && isset($_POST['password'])) {
-                $username = htmlspecialchars($_POST['username']);
-                $password = htmlspecialchars($_POST['password']);
-                if (verify_login($db, $username, $password)) {
+            if (isset($_POST['cust_email']) && isset($_POST['cust_password'])) {
+                $cust_email = htmlspecialchars($_POST['cust_email']);
+                $cust_password = htmlspecialchars($_POST['cust_password']);
+                if (verify_login($db, $cust_email, $cust_password)) {
                     $_SESSION['login'] = 'accept_existing';
-                    $_SESSION['user'] = $username;
+                    $_SESSION['user'] = $cust_email;
                     header('Location: login_message.php');
                 }
                 else {
@@ -110,35 +110,35 @@ if (!isset($_SESSION['customers'])) {
             }
         }
         else {  //create new user
-            if (isset($_POST['username']) && isset($_POST['password'])) {
-                $username = htmlspecialchars($_POST['username']);
-                $password = htmlspecialchars($_POST['password']);
+            if (isset($_POST['cust_email']) && isset($_POST['cust_password'])) {
+                $cust_email = htmlspecialchars($_POST['cust_email']);
+                $cust_password = htmlspecialchars($_POST['cust_password']);
 
-                if (validPassword($password)) {
-                    $password2 = htmlspecialchars($_POST['password2']);
-                    if ($password !== $password2) {
-                        echo "<script type='text/javascript'>alert('Passwords do not match.');</script>";
+                if (validcust_password($cust_password)) {
+                    $cust_password2 = htmlspecialchars($_POST['cust_password2']);
+                    if ($cust_password !== $cust_password2) {
+                        echo "<script type='text/javascript'>alert('cust_passwords do not match.');</script>";
                     }
-                    else  //passwords match
+                    else  //cust_passwords match
                     {
-                        if (existing_username($db, $username)) {
-                            echo "<script type='text/javascript'>alert('username unavailable');</script>";
+                        if (existing_cust_email($db, $cust_email)) {
+                            echo "<script type='text/javascript'>alert('cust_email unavailable');</script>";
                         }
-                        else {  //username available
-                            $encrypt_password = password_hash($password, PASSWORD_DEFAULT);
-                            if (addUser($db, $username, $encrypt_password, $fname, $lname, $address, $city, $state, $zip)){
+                        else {  //cust_email available
+                            $encrypt_cust_password = cust_password_hash($cust_password, cust_password_DEFAULT);
+                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $lname, $cust_address, $city, $state, $zip)){
                                 $_SESSION['login'] = 'accept_new';
-                                $_SESSION['user'] = $username;
+                                $_SESSION['user'] = $cust_email;
                                 header('Location: login_message.php');
                             }
                             else {
                                 echo "<script type='text/javascript'>alert('Unable to create account.');</script>";
                             }
-                        }//!existing_username
-                    }//passwords match
-                }//valid password
-                else {    //invalid password
-                    echo "<script type='text/javascript'>alert('Password must be at least 8 characters and "
+                        }//!existing_cust_email
+                    }//cust_passwords match
+                }//valid cust_password
+                else {    //invalid cust_password
+                    echo "<script type='text/javascript'>alert('cust_password must be at least 8 characters and "
                         . "contain at least one number, one uppercase letter, and one lowercase letter');</script>";
                 }
             }//isset
@@ -158,33 +158,27 @@ if (!isset($_SESSION['customers'])) {
         </header>
         <main>
             <form action="" method="post">
-                <label for="username" class="login_label">Username</label>
+                <label for="cust_email" class="login_label">cust_email</label>
                 <?php
-                echo "<input type='text' name='username' value=$username>";
+                echo "<input type='text' name='cust_email' value=$cust_email>";
                 if ($_SESSION['login-type'] == "new") {
-                    echo '<input type="submit" name="check_username" value="Check Username Availability" id="check_button">';
+                    echo '<input type="submit" name="check_cust_email" value="Check cust_email Availability" id="check_button">';
                 }
                 echo '<br/>';
                 ?>
-                <label for="password" class="login_label">Password</label>
-                <input type="password" name="password" value=""><br />
+                <label for="cust_password" class="login_label">cust_password</label>
+                <input type="cust_password" name="cust_password" value=""><br />
                 <?php
                 if ($_SESSION['login-type'] == "new"){
-                    echo "<label for='password2' class='login_label'>Retype password</label>";
-                    echo "<input type='password' name='password2' value=''><br /><br />";
+                    echo "<label for='cust_password2' class='login_label'>Retype cust_password</label>";
+                    echo "<input type='cust_password' name='cust_password2' value=''><br /><br />";
 
-                    echo "<label for='fname' class='login_label'>First Name</label>";
-                    echo "<input type='text' name='fname' value='$fname' required><br />";
+                    echo "<label for='cust_name' class='login_label'>First Name</label>";
+                    echo "<input type='text' name='cust_name' value='$cust_name' required><br />";
                     echo "<label for='lname' class='login_label'>Last Name</label>";
                     echo "<input type='text' name='lname' value='$lname' required><br />";
-                    echo "<label for='address' class='login_label'>Street Address</label>";
-                    echo "<input type='text' name='address' value='$address' required ><br />";
-                    echo "<label for='city' class='login_label'>City</label>";
-                    echo "<input type='text' name='city' value='$city' required><br />";
-                    echo "<label for='state' class='login_label'>State</label>";
-                    echo "<input type='text' name='state' value='$state' required><br />";
-                    echo "<label for='zip' class='login_label'>Zipcode</label>";
-                    echo "<input type='text' name='zip' value='$zip' required><br />";
+                    echo "<label for='cust_address' class='login_label'>Street cust_address</label>";
+                    echo "<input type='text' name='cust_address' value='$cust_address' required ><br />";
                     $submit_value = 'Create Account';
                 }
                 else {

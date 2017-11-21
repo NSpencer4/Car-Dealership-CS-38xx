@@ -149,14 +149,14 @@ class process
 
     /**
      * This method adds customer inquiries to a file
-     * @param $fname the first name of the customer
+     * @param $cust_name the first name of the customer
      * @param $lname the last name of the customer
      * @param $date the date the customer wants to reserve the car
      * @param $car the car the customer wants to reserve
      */
-    public function add($fname, $lname, $date, $car) {
+    public function add($cust_name, $lname, $date, $car) {
         $file = 'input/customers.txt';
-        file_put_contents($file, $fname."\n", FILE_APPEND | LOCK_EX);
+        file_put_contents($file, $cust_name."\n", FILE_APPEND | LOCK_EX);
         file_put_contents($file, $lname."\n", FILE_APPEND | LOCK_EX);
         file_put_contents($file, $date."\n", FILE_APPEND | LOCK_EX);
         file_put_contents($file, $car, FILE_APPEND | LOCK_EX);

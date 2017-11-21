@@ -10,10 +10,10 @@
       $result = $statement->fetch();
       $statement->closeCursor();
       $hash = $result['cust_password'];
-      return password_verify($cust_password, $hash);
+      return cust_password_verify($cust_password, $hash);
     }
     
-    function existing_username($db, $cust_email)
+    function existing_cust_email($db, $cust_email)
     {
       $query = "SELECT COUNT(cust_email) FROM customers WHERE cust_email = :cust_email";
       $statement = $db->prepare($query);
@@ -39,9 +39,9 @@
     }
     
      
-    function validPassword($password){
+    function validcust_password($cust_password){
       $valid_pattern = '/(?=^.{8,}$)(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).*$/';
-      if (preg_match($valid_pattern, $password))
+      if (preg_match($valid_pattern, $cust_password))
         return true;
       else
         return false;
