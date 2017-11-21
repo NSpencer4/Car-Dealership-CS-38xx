@@ -30,8 +30,8 @@ $login_status = $_SESSION['login'];
           else if ($login_status == 'deny'){
             echo "<h1>Login failed.</h1>";            
           }
-          echo "You will be redirected to the home page in 5 seconds.";
-          header( "refresh:5; url=index.php" );
+          echo "You will be redirected to the home page in 3 seconds.";
+          header( "refresh:3; url=index.php" );
         ?>
     </section>
     <?php include('templates/footer.php'); ?>
