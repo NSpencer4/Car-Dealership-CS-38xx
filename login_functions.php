@@ -10,7 +10,7 @@
       $result = $statement->fetch();
       $statement->closeCursor();
       $hash = $result['cust_password'];
-      return cust_password_verify($cust_password, $hash);
+      return password_verify($cust_password, $hash);
     }
     
     function existing_cust_email($db, $cust_email)

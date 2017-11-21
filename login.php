@@ -23,7 +23,6 @@ if (!isset($_SESSION['customers'])) {
 
         require_once("open-db.php");
         include ("login_functions.php");
-        session_start();
 
         //need to save whether log in is new or existing
         if (isset($_POST['type'])) {
@@ -107,8 +106,8 @@ if (!isset($_SESSION['customers'])) {
                             echo "<script type='text/javascript'>alert('cust_email unavailable');</script>";
                         }
                         else {  //cust_email available
-                            $encrypt_cust_password = password_hash($cust_password, password_DEFAULT);
-                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $lname, $cust_address, $city, $state, $cust_phone)){
+                            $encrypt_cust_password = password_hash($cust_password, PASSWORD_DEFAULT);
+                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $cust_address, $cust_phone)){
                                 $_SESSION['login'] = 'accept_new';
                                 $_SESSION['user'] = $cust_email;
                                 header('Location: login_message.php');
@@ -155,12 +154,12 @@ if (!isset($_SESSION['customers'])) {
                     echo "<label for='cust_password2' class='login_label'>Retype cust_password</label>";
                     echo "<input type='cust_password' name='cust_password2' value=''><br /><br />";
 
-                    echo "<label for='cust_name' class='login_label'>First Name</label>";
+                    echo "<label for='cust_name' class='login_label'>Name</label>";
                     echo "<input type='text' name='cust_name' value='$cust_name' required><br />";
-                    echo "<label for='lname' class='login_label'>Last Name</label>";
-                    echo "<input type='text' name='lname' value='$lname' required><br />";
-                    echo "<label for='cust_address' class='login_label'>Street cust_address</label>";
+                    echo "<label for='cust_address' class='login_label'>Street Address</label>";
                     echo "<input type='text' name='cust_address' value='$cust_address' required ><br />";
+                    echo "<label for='cust_phone' class='login_label'>Phone Number</label>";
+                    echo "<input type='text' name='cust_phone' value='$cust_phone' required ><br />";
                     $submit_value = 'Create Account';
                 }
                 else {
