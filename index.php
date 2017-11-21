@@ -28,17 +28,6 @@ if (isset($_POST['CarIndex'])) {
         <main id="container" class="cards">
             <?php
             include('templates/header.php');
-            if (isset($_POST['firstname'])) {
-                echo "<h2>";
-                $name = $_POST['firstname'];
-                //HEREDOC
-                echo <<<EOT
-                We look forward to meeting with you 
-                $name !
-EOT;
-                echo "</h2>";
-            }
-
             ?>
             <section id="main-container">
                 <table>
