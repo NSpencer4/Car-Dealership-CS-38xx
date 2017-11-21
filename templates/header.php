@@ -14,7 +14,9 @@ echo '<a href="schedule.php" <button class="btn modify margin-left">Schedule A S
 echo '<a href="history.php" <button class="btn modify margin-left">Service History</button></a>';
 echo '<a href="about.php" <button class="btn modify margin-left">About us</button></a>';
 if (!isset($_SESSION['login-type'])) {
-    echo '<a href="login_start.php" <button class="btn modify margin-left">Login / Register</button></a>';
+  echo '<a href="login_start.php" <button class="btn modify margin-left">Login / Register</button></a>';
+} else {
+  echo '<a href="logout.php" <button class="btn modify margin-left">Logout</button></a>';
 }
 
 echo "</header>";

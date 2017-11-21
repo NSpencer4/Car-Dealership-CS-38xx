@@ -106,7 +106,7 @@ footer {
 
 .btn {
     cursor: pointer;
-    -webkit-appearance: button;
+    -webkit-appearance: inherit;
     display: inline-block;
     font-weight: 400;
     line-height: 1.25;

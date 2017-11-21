@@ -6,6 +6,8 @@ if (!isset($_SESSION['inventory'])) {
 if (!isset($_SESSION['customers'])) {
     $_SESSION['customers'] = $process->readCustomers();
 }
+
+var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,6 +50,24 @@ if (!isset($_SESSION['customers'])) {
         }
         else {
             $cust_address = "";
+        }
+        if (isset($_POST['cust_city'])) {
+            $cust_city = htmlspecialchars($_POST['cust_city']);
+        }
+        else {
+            $cust_city = "";
+        }
+        if (isset($_POST['cust_state'])) {
+            $cust_state = htmlspecialchars($_POST['cust_state']);
+        }
+        else {
+            $cust_state = "";
+        }
+        if (isset($_POST['cust_zip'])) {
+            $cust_zip = htmlspecialchars($_POST['cust_zip']);
+        }
+        else {
+            $cust_zip = "";
         }
         if (isset($_POST['cust_phone'])) {
             $cust_phone = htmlspecialchars($_POST['cust_phone']);
@@ -107,7 +127,7 @@ if (!isset($_SESSION['customers'])) {
                         }
                         else {  //cust_email available
                             $encrypt_cust_password = password_hash($cust_password, PASSWORD_DEFAULT);
-                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $cust_address, $cust_phone)){
+                            if (addUser($db, $cust_email, $encrypt_cust_password, $cust_name, $cust_address, $cust_zip, $cust_city, $cust_state, $cust_phone)){
                                 $_SESSION['login'] = 'accept_new';
                                 $_SESSION['user'] = $cust_email;
                                 header('Location: login_message.php');
@@ -158,6 +178,12 @@ if (!isset($_SESSION['customers'])) {
                     echo "<input type='text' name='cust_name' value='$cust_name' required><br />";
                     echo "<label for='cust_address' class='login_label'>Street Address</label>";
                     echo "<input type='text' name='cust_address' value='$cust_address' required ><br />";
+                    echo "<label for='cust_state' class='login_label'>State</label>";
+                    echo "<input type='text' name='cust_state' value='$cust_state' required ><br />";
+                    echo "<label for='cust_city' class='login_label'>City</label>";
+                    echo "<input type='text' name='cust_city' value='$cust_city' required ><br />";
+                    echo "<label for='cust_zip' class='login_label'>Zip</label>";
+                    echo "<input type='text' name='cust_zip' value='$cust_zip' required ><br />";
                     echo "<label for='cust_phone' class='login_label'>Phone Number</label>";
                     echo "<input type='text' name='cust_phone' value='$cust_phone' required ><br />";
                     $submit_value = 'Create Account';
