@@ -8,112 +8,65 @@
  */
 class functions
 {
-    public function getQs($db) {
-        $query = "SELECT questionID, questionText from questions";
+    public function get_appointments($db) {
+      $query = "SELECT service_id, appt_time, cust_email, cust_comments from Appointments";
 
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $statement->closeCursor();
-        return $result;
+      $statement = $db->prepare($query);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+      $statement->closeCursor();
+      return $result;
     }
 
-    public function getAs($db) {
-        $query = "SELECT questionID, answerText, correctAnswerText from answers";
+    public function get_services($db) {
+      $query = "SELECT service_id, serv_description from Services";
 
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $statement->closeCursor();
-        return $result;
+      $statement = $db->prepare($query);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+      $statement->closeCursor();
+      return $result;
     }
 
-    public function populate_not_answered($submission, $answers_arr) {
-        $qids = $this->get_q_ids($answers_arr);
-
-        foreach ($qids as $value) {
-            if (!isset($submission[$value])) {
-                $submission[$value] = "Not answered";
-            }
+    public function get_appointment_times($db, $appointments) {
+      $unavailable_times = array();
+      $available_times = array();
+      foreach ($appointments as $appointment) {
+        array_push($unavailable_times, date("Y-m-d H:i:s", strtotime($appointment['appt_time'])));
+      }
+      foreach ($unavailable_times as $unavailable_time) {
+        $possible_time = date("Y-m-d H:i:s", strtotime($unavailable_time . "+1 hour"));
+        if (!in_array($possible_time, $unavailable_times)) {
+          array_push($available_times, $possible_time);
         }
-
-        return $submission;
+      }
+      return $available_times;
     }
 
-    public function get_q_ids($arr) {
-        $dup_checker = array();
-        foreach ($arr as $key=>$answer) {
-            $question_id = $answer['questionID'];
-            if (!in_array((string)$question_id, $dup_checker)) {
-                array_push($dup_checker, (string)$question_id);
-            }
-        }
-        return $dup_checker;
+    public function submit_service_req($db, $form) {
+      $appointments = $this->get_appointments($db);
+      $available_times = $this->get_appointment_times($db, $appointments);
+      print_r($available_times);
+      $query = "INSERT INTO Appointments (service_id, appt_time, cust_email, cust_comments)
+            VALUES (:service_id, :appt_time, :cust_email, :cust_comments)";
+      $statement = $db->prepare($query);
+      $statement->bindValue(':service_id', $form['service']);
+      $statement->bindValue(':appt_time', $available_times[$form['service_date']]);
+      $statement->bindValue(':cust_email', $form['cust_email']);
+      $statement->bindValue(':cust_comments', $form['cust_comments']);
+      $success = $statement->execute();
+      $statement->closeCursor();
+      return $success;
     }
 
-    public function gradeQuiz($submission, $answer_arr) {
-        $graded_arr = array();
-        $answer_key = $this->create_answer_key($answer_arr);
-
-        foreach ($answer_key as $key=>$answer) {
-            if ($submission[$key] == $answer_key[$key]) {
-                array_push($graded_arr, "Correct");
-            } elseif ($submission[$key] == "Not answered") {
-                array_push($graded_arr, "Not answered");
-            } else {
-                array_push($graded_arr, "Incorrect");
-            }
-        }
-
-        return $graded_arr;
-    }
-
-    public function create_answer_key($answer_arr) {
-        $dup_checker = array();
-        $answer_key = array();
-
-        foreach ($answer_arr as $key=>$answer) {
-            $question_id = $answer['questionID'];
-            if (!in_array((string)$question_id, $dup_checker)) {
-                array_push($dup_checker, (string)$question_id);
-            } else {
-                unset($answer_arr[$key]);
-            }
-            unset($answer_arr[$key]['answerText']);
-        }
-
-        foreach ($answer_arr as $answer) {
-            $answer_key[(string)$answer['questionID']] = $answer['correctAnswerText'];
-        }
-
-        return $answer_key;
-    }
-
-    public function saveAttempt($arr, $db) {
-        $correct_count = 0;
-        foreach ($arr as $result) {
-            if ($result == "Correct") {
-                $correct_count++;
-            }
-        }
-
-        $date = date("Y-m-d H:i:s");
-
-        $query = "INSERT INTO scores (dateCompleted, score)
-              VALUES ('$date', $correct_count)";
-
-        $statement = $db->prepare($query);
-        $success = $statement->execute();
-        $statement->closeCursor();
-    }
-
-    public function getPrevAttempts($db) {
-        $query = "SELECT dateCompleted, score from scores";
-
-        $statement = $db->prepare($query);
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $statement->closeCursor();
-        return $result;
+    public function get_user_serv_history ($db, $user){
+      $query = "SELECT Appointments.service_id, Appointments.appt_time, Appointments.cust_comments, Services.serv_description FROM Appointments
+                INNER JOIN Services ON Services.service_id=Appointments.service_id;
+                ORDER BY Appointments.appt_time";
+      $statement = $db->prepare($query);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+      $statement->closeCursor();
+      return $result;
     }
 }

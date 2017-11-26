@@ -13,8 +13,10 @@ echo '<a href="index.php" <button class="btn modify margin-left">Showroom</butto
 echo '<a href="schedule.php" <button class="btn modify margin-left">Schedule A Service</button></a>';
 echo '<a href="history.php" <button class="btn modify margin-left">Service History</button></a>';
 echo '<a href="about.php" <button class="btn modify margin-left">About us</button></a>';
-if (!isset($_SESSION['login-type'])) {
-    echo '<a href="login_start.php" <button class="btn modify margin-left">Login / Register</button></a>';
+if (!isset($_SESSION['login-type']) || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny') {
+  echo '<a href="login_start.php" <button class="btn modify margin-left">Login / Register</button></a>';
+} else {
+  echo '<a href="logout.php" <button class="btn modify margin-left">Logout</button></a>';
 }
 
 echo "</header>";

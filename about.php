@@ -1,10 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['inventory'])) {
-    $_SESSION['inventory'] = $process->readInventory();
-}
-if (!isset($_SESSION['customers'])) {
-    $_SESSION['customers'] = $process->readCustomers();
+if (!isset($_SESSION['exotic_inventory'])) {
+    $_SESSION['exotic_inventory'] = $process->readInventory();
 }
 ?>
 <!DOCTYPE html>
