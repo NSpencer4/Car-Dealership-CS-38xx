@@ -6,8 +6,8 @@ $process = new process();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = $process->readInventory();
 }
-if (!isset($_SESSION['customers'])) {
-    $_SESSION['customers'] = $process->readCustomers();
+if (!isset($_SESSION['exotic_customers'])) {
+    $_SESSION['exotic_customers'] = $process->readCustomers();
 }
 if (isset($_POST['Method']) && isset($_SESSION['exotic_inventory'])) {
     $process->add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']);

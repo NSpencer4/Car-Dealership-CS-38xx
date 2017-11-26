@@ -3,8 +3,8 @@ session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = $process->readInventory();
 }
-if (!isset($_SESSION['customers'])) {
-    $_SESSION['customers'] = $process->readCustomers();
+if (!isset($_SESSION['exotic_customers'])) {
+    $_SESSION['exotic_customers'] = $process->readCustomers();
 }
 ?>
 <!DOCTYPE html>
@@ -24,13 +24,14 @@ if (!isset($_SESSION['customers'])) {
             echo "You are not logged in. Please login and try again. Redirecting to the homepage in 3 seconds.";
             header( "refresh:3; url=login_start.php" );
         } else {
-            echo "<h2>Scheduling Page</h2>";
-            echo "<p>";
-            echo "Hodor, HODOR hodor, hodor hodor... Hodor hodor hodor? Hodor, hodor; hodor hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor hodor - hodor... Hodor hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor!
-            Hodor, HODOR hodor, hodor hodor... Hodor hodor hodor? Hodor, hodor; hodor hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor hodor - hodor... Hodor hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor!
-            Hodor, HODOR hodor, hodor hodor... Hodor hodor hodor? Hodor, hodor; hodor hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor hodor - hodor... Hodor hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor!
-            Hodor, HODOR hodor, hodor hodor... Hodor hodor hodor? Hodor, hodor; hodor hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor hodor - hodor... Hodor hodor hodor. Hodor, hodor. Hodor. Hodor, hodor hodor hodor!";
-        echo "</p><br>";
+            echo "<h2>Scheduling Page</h2><br>";
+            echo '<form action="confirmation.php" method="POST">';
+            echo '<br><br><input type="text" name="firstname" placeholder="First Name"><br><br>';
+            echo '<input type="text" name="lastname" placeholder="Last Name"><br><br>';
+            echo '<input type="date" name="date"><br><br>';
+            echo '<input type="hidden" name="CarIndex" value="'.$_POST['CarIndex'].'">';
+            echo '<input type="submit" class="btn modify" name="Method" value="Reserve">';
+            echo '</form>';
         }
         ?>
     </section>
