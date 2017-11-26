@@ -3,9 +3,6 @@ session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = $process->readInventory();
 }
-if (!isset($_SESSION['exotic_customers'])) {
-    $_SESSION['exotic_customers'] = $process->readCustomers();
-}
 $login_status = $_SESSION['login'];
 ?>
 <!DOCTYPE html>
@@ -28,7 +25,7 @@ $login_status = $_SESSION['login'];
             echo "<h1>Your account has been created.</h1>";
           }
           else if ($login_status == 'deny'){
-            echo "<h1>Login failed.</h1>";            
+            echo "<h1>Login failed.</h1>";
           }
           echo "You will be redirected to the home page in 3 seconds.";
           header( "refresh:3; url=index.php" );

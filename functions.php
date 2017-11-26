@@ -9,7 +9,7 @@
 class functions
 {
     public function get_appointments($db) {
-      $query = "SELECT service_id, appt_time, cust_email from Appointments";
+      $query = "SELECT service_id, appt_time, cust_email, cust_comments from Appointments";
 
       $statement = $db->prepare($query);
       $statement->execute();

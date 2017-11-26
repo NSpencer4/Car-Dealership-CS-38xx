@@ -3,9 +3,8 @@ session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = $process->readInventory();
 }
-if (!isset($_SESSION['exotic_customers'])) {
-    $_SESSION['exotic_customers'] = $process->readCustomers();
-}
+$functions = new functions();
+$services = $functions->get_services();
 
 print_r($_SESSION);
 ?>
@@ -27,9 +26,13 @@ print_r($_SESSION);
             header( "refresh:3; url=login_start.php" );
         } else {
             echo "<h2>Scheduling Page</h2><br>";
-            echo '<textarea placeholder="Service request description" rows="4" cols="50" maxlength="200" name="service_description" form="reserveform"></textarea><br><br>';
             echo '<form action="confirmation.php" id="reserveform" method="POST">';
+            // foreach ($services as $service) {
+            //   echo '<input type="radio" name="service" value="'.$service.'"><br><br>';
+            // }
+            echo '<label for="service_date">Appointment Date</label>';
             echo '<input type="datetime-local" name="service_date"><br><br>';
+            echo '<textarea placeholder="Customer Comments" rows="4" cols="50" maxlength="200" name="cust_comments" form="reserveform"></textarea><br><br>';
             echo '<input type="hidden" name="cust_email" value="'.$_SESSION['user'].'">';
             echo '<input type="submit" class="btn modify" name="Method" value="Request">';
             echo '</form>';

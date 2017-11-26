@@ -3,9 +3,6 @@ session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = $process->readInventory();
 }
-if (!isset($_SESSION['exotic_customers'])) {
-    $_SESSION['exotic_customers'] = $process->readCustomers();
-}
 
 var_dump($_POST);
 ?>
