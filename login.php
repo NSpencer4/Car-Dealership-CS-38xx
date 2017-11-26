@@ -3,8 +3,6 @@ session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = $process->readInventory();
 }
-
-var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html>
