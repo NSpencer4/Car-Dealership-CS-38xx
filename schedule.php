@@ -27,11 +27,11 @@ print_r($_SESSION);
             header( "refresh:3; url=login_start.php" );
         } else {
             echo "<h2>Scheduling Page</h2><br>";
-            echo '<form action="confirmation.php" method="POST">';
-            echo '<br><br><input type="text" name="service_description" placeholder="Service Description"><br><br>';
-            echo '<input type="date" name="date"><br><br>';
-            // echo '<input type="hidden" name="cust_name" value="'.$_POST['CarIndex'].'">';
-            echo '<input type="submit" class="btn modify" name="Method" value="Service_Request">';
+            echo '<textarea placeholder="Service request description" rows="4" cols="50" maxlength="200" name="service_description" form="reserveform"></textarea><br><br>';
+            echo '<form action="confirmation.php" id="reserveform" method="POST">';
+            echo '<input type="datetime-local" name="service_date"><br><br>';
+            echo '<input type="hidden" name="cust_email" value="'.$_SESSION['user'].'">';
+            echo '<input type="submit" class="btn modify" name="Method" value="Request">';
             echo '</form>';
         }
         ?>
