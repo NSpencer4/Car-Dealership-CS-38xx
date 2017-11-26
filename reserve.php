@@ -9,7 +9,7 @@ $process = new process();
 <head>
   <title>
     <?php
-    echo $_SESSION['inventory'][$_POST['CarIndex']]['car'];
+    echo $_SESSION['exotic_inventory'][$_POST['CarIndex']]['car'];
     ?>
   </title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -23,8 +23,8 @@ $process = new process();
   <section id="main-content-container">
     <div class="cards" id="car-reserve-container">
       <?php
-      echo "<h1>"."Reserve Your Future " . $_SESSION['inventory'][$_POST['CarIndex']]['car']."</h1>";
-      echo "<img id='car-reserve-img' class='car-img' src='".$_SESSION['inventory'][$_POST['CarIndex']]['image']."'><br>";
+      echo "<h1>"."Reserve Your Future " . $_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']."</h1>";
+      echo "<img id='car-reserve-img' class='car-img' src='".$_SESSION['exotic_inventory'][$_POST['CarIndex']]['image']."'><br>";
       echo '<form action="index.php" method="POST">';
       ?>
       <br><br><input type="text" name="firstname" placeholder="First Name"><br><br>

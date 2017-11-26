@@ -3,17 +3,17 @@ session_start();
 require_once('process.php');
 $process = new process();
 
-if (!isset($_SESSION['inventory'])) {
-    $_SESSION['inventory'] = $process->readInventory();
+if (!isset($_SESSION['exotic_inventory'])) {
+    $_SESSION['exotic_inventory'] = $process->readInventory();
 }
 if (!isset($_SESSION['customers'])) {
     $_SESSION['customers'] = $process->readCustomers();
 }
-if (isset($_POST['Method']) && isset($_SESSION['inventory'])) {
-    $process->add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['inventory'][$_POST['CarIndex']]['car']);
+if (isset($_POST['Method']) && isset($_SESSION['exotic_inventory'])) {
+    $process->add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']);
 }
 if (isset($_POST['CarIndex'])) {
-    $_SESSION['inventory'] = $process->carStatusChange($_SESSION['inventory'], $_POST['CarIndex'], "Reserved");
+    $_SESSION['exotic_inventory'] = $process->carStatusChange($_SESSION['exotic_inventory'], $_POST['CarIndex'], "Reserved");
 }
 ?>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ if (isset($_POST['CarIndex'])) {
                 <table>
                     <?php
                     $rowCount = 0;
-                    foreach ($_SESSION['inventory'] as $key=>$car){
+                    foreach ($_SESSION['exotic_inventory'] as $key=>$car){
                         echo '<form action="form.php" method="POST">';
 
                         if ($rowCount === 0) {

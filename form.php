@@ -9,7 +9,7 @@ $process = new process();
 <head>
     <title>
         <?php
-        echo $_SESSION['inventory'][$_POST['CarIndex']]['car'];
+        echo $_SESSION['exotic_inventory'][$_POST['CarIndex']]['car'];
         ?>
     </title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -22,18 +22,15 @@ $process = new process();
     <?php include('templates/header.php'); ?>
         <h1>
           <?php
-          echo $_SESSION['inventory'][$_POST['CarIndex']]['car'];
+          echo $_SESSION['exotic_inventory'][$_POST['CarIndex']]['car'];
           ?>
         </h1>
     <section id="main-content-container">
         <div class="cards" id="car-emphasis-container">
           <?php
-              echo '<form action="reserve.php" method="POST">';
-              echo "<img id='car-emphasis-img' class='car-img' src='".$_SESSION['inventory'][$_POST['CarIndex']]['image']."'><br>";
+              echo "<img id='car-emphasis-img' class='car-img' src='".$_SESSION['exotic_inventory'][$_POST['CarIndex']]['image']."'><br>";
               echo '<input type="hidden" name="CarIndex" value="'.$_POST['CarIndex'].'">';
-              echo "<h3>".$_SESSION['inventory'][$_POST['CarIndex']]['price']."</h3>"."<br>";
-              echo '<input type="submit" class="btn modify" name="Method" value="Reserve">';
-              echo '</form>';
+              echo "<h3>".$_SESSION['exotic_inventory'][$_POST['CarIndex']]['price']."</h3>"."<br>";
           ?>
         </div>
     </section>
