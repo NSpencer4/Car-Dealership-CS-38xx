@@ -6,6 +6,8 @@ if (!isset($_SESSION['exotic_inventory'])) {
 if (!isset($_SESSION['exotic_customers'])) {
     $_SESSION['exotic_customers'] = $process->readCustomers();
 }
+
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,17 +22,16 @@ if (!isset($_SESSION['exotic_customers'])) {
     <?php include('templates/header.php'); ?>
     <section id="main-container">
         <?php
-        if (!isset($_SESSION['login-type'])) {
+        if (!isset($_SESSION['login-type']) || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny' || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny') {
             echo "You are not logged in. Please login and try again. Redirecting to the homepage in 3 seconds.";
             header( "refresh:3; url=login_start.php" );
         } else {
             echo "<h2>Scheduling Page</h2><br>";
             echo '<form action="confirmation.php" method="POST">';
-            echo '<br><br><input type="text" name="firstname" placeholder="First Name"><br><br>';
-            echo '<input type="text" name="lastname" placeholder="Last Name"><br><br>';
+            echo '<br><br><input type="text" name="service_description" placeholder="Service Description"><br><br>';
             echo '<input type="date" name="date"><br><br>';
-            echo '<input type="hidden" name="CarIndex" value="'.$_POST['CarIndex'].'">';
-            echo '<input type="submit" class="btn modify" name="Method" value="Reserve">';
+            // echo '<input type="hidden" name="cust_name" value="'.$_POST['CarIndex'].'">';
+            echo '<input type="submit" class="btn modify" name="Method" value="Service_Request">';
             echo '</form>';
         }
         ?>
