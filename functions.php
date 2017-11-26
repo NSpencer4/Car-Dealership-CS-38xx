@@ -40,7 +40,6 @@ class functions
           array_push($available_times, $possible_time);
         }
       }
-
       return $available_times;
     }
 
@@ -58,5 +57,16 @@ class functions
       $success = $statement->execute();
       $statement->closeCursor();
       return $success;
+    }
+
+    public function get_user_serv_history ($db, $user){
+      $query = "SELECT Appointments.service_id, Appointments.appt_time, Appointments.cust_comments, Services.serv_description FROM Appointments
+                INNER JOIN Services ON Services.service_id=Appointments.service_id;
+                ORDER BY Appointments.appt_time";
+      $statement = $db->prepare($query);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+      $statement->closeCursor();
+      return $result;
     }
 }
