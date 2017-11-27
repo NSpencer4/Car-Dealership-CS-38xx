@@ -80,7 +80,8 @@ class functions
      */
     public function get_user_serv_history ($db, $user){
       $query = "SELECT Appointments.service_id, Appointments.appt_time, Appointments.cust_comments, Services.serv_description FROM Appointments
-                INNER JOIN Services ON Services.service_id=Appointments.service_id;
+                INNER JOIN Services ON Services.service_id=Appointments.service_id
+                WHERE (Appointments.cust_email='$user')
                 ORDER BY Appointments.appt_time";
       $statement = $db->prepare($query);
       $statement->execute();
