@@ -1,14 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $process->readInventory();
+    $_SESSION['exotic_inventory'] = $functions->readInventory();
 }
 require_once('functions.php');
 require_once('open-db.php');
 $functions = new functions();
 if (isset($_SESSION['user'])) {
   $services = $functions->get_user_serv_history($db, $_SESSION['user']);
-  print_r($services);
 }
 ?>
 <!DOCTYPE html>

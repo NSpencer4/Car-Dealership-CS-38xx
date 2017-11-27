@@ -157,7 +157,7 @@
         <option value="$PROJECT_DIR$/form.php" />
         <option value="$PROJECT_DIR$/about.php" />
         <option value="$PROJECT_DIR$/input/inventory.txt" />
-        <option value="$PROJECT_DIR$/process.php" />
+        <option value="$PROJECT_DIR$/functions.php" />
         <option value="$PROJECT_DIR$/input/customers.txt" />
         <option value="$PROJECT_DIR$/functions.php" />
         <option value="$PROJECT_DIR$/open-db.php" />
@@ -517,7 +517,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/process.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
           <caret line="113" column="27" lean-forward="false" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
@@ -551,7 +551,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/process.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
           <caret line="113" column="27" lean-forward="false" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
@@ -578,7 +578,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input/task_list.txt" />
-    <entry file="file://$PROJECT_DIR$/process.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2720">
           <caret line="160" column="12" lean-forward="false" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
@@ -620,7 +620,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/process.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2720">
           <caret line="160" column="12" lean-forward="false" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
@@ -709,7 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/process.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="38" lean-forward="true" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
