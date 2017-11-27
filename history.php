@@ -8,7 +8,6 @@ require_once('open-db.php');
 $functions = new functions();
 if (isset($_SESSION['user'])) {
   $services = $functions->get_user_serv_history($db, $_SESSION['user']);
-  print_r($services);
 }
 ?>
 <!DOCTYPE html>
