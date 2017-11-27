@@ -1,16 +1,16 @@
 <?php
 session_start();
-require_once('process.php');
-$process = new process();
+require_once('functions.php');
+$functions = new functions();
 
 if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $process->readInventory();
+    $_SESSION['exotic_inventory'] = $functions->readInventory();
 }
 if (isset($_POST['Method']) && isset($_SESSION['exotic_inventory'])) {
-    $process->add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']);
+    $functions->add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']);
 }
 if (isset($_POST['CarIndex'])) {
-    $_SESSION['exotic_inventory'] = $process->carStatusChange($_SESSION['exotic_inventory'], $_POST['CarIndex'], "Reserved");
+    $_SESSION['exotic_inventory'] = $functions->carStatusChange($_SESSION['exotic_inventory'], $_POST['CarIndex'], "Reserved");
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ if (isset($_POST['CarIndex'])) {
                     <?php
                     $rowCount = 0;
                     foreach ($_SESSION['exotic_inventory'] as $key=>$car){
-                        echo '<form action="form.php" method="POST">';
+                        echo '<form action="showroom.php" method="POST">';
 
                         if ($rowCount === 0) {
                             echo "<tr>";
