@@ -18,7 +18,6 @@ $functions = new functions();
         <div class="cards" id="car-emphasis-container">
           <?php
               echo "<img id='car-emphasis-img' class='car-img' src='".$_SESSION['exotic_inventory'][$_POST['CarIndex']]['image']."'><br>";
-              echo '<input type="hidden" name="CarIndex" value="'.$_POST['CarIndex'].'">';
               echo "<h3>".$_SESSION['exotic_inventory'][$_POST['CarIndex']]['price']."</h3>"."<br>";
           ?>
         </div>

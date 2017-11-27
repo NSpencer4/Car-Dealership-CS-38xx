@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $functions->readInventory();
-}
-?>
 <!DOCTYPE html>
 <html>
 <?php include('templates/navbar.php'); ?>
