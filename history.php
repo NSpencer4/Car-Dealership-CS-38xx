@@ -9,7 +9,6 @@ $functions = new functions();
 if (isset($_SESSION['user'])) {
   $services = $functions->get_user_serv_history($db, $_SESSION['user']);
 }
-print_r($_SESSION['user']);
 ?>
 <!DOCTYPE html>
 <html>
