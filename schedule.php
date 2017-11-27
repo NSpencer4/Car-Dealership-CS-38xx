@@ -12,15 +12,10 @@ $available_times = $functions->get_appointment_times($db, $appointments);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>BHowdy's Exotic Car Dealership</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-</head>
+<?php include('templates/navbar.php'); ?>
 <body>
 <main id="container" class="cards">
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/navbar.php'); ?>
     <section id="main-container">
         <?php
         if (!isset($_SESSION['login-type']) || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny' || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny') {

@@ -5,20 +5,10 @@ $functions = new functions();
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>
-        <?php
-        echo $_SESSION['exotic_inventory'][$_POST['CarIndex']]['car'];
-        ?>
-    </title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-</head>
-
+<?php include('templates/navbar.php'); ?>
 <body>
 <main id="container" class="cards">
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/navbar.php'); ?>
         <h1>
           <?php
           echo $_SESSION['exotic_inventory'][$_POST['CarIndex']]['car'];
