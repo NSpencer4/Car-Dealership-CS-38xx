@@ -19,13 +19,13 @@ if (!isset($_SESSION['exotic_inventory'])) {
         <h2>About Us</h2>
         <h3>Nicholas Spencer</h3>
         <p>
-            I worked on the backend logic for the reserve process the included reading and writing to the appropriate
-            files and connecting the user interface to the backend logic.
+            I worked on the backend logic for the service request, history, and form validation. This involved
+            reading and storing data into our database as well as ensuring the appointment times are appropriate.
         </p><br>
         <h3>Brandon Howard</h3>
         <p>
-            Front end design along with wrote the templates needed to reading and writing from
-            a file. Wrote the read customers function where it reads the customer information
+            Front end design along with wrote the templates that displayed the data from the backend functions.
+            Wrote the read inventory function where it reads the car information
             that is stored into a session array.
         </p><br>
     </section>
