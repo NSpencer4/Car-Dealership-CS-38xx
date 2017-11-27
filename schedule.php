@@ -30,13 +30,13 @@ $available_times = $functions->get_appointment_times($db, $appointments);
             echo "<h2>Scheduling Page</h2><br>";
             echo '<form action="confirmation.php" id="reserveform" method="POST">';
             foreach ($services as $service) {
-              echo '<label for="service-'.$service['service_id'].'">'.$service['serv_description'].'</label>';
-              echo '<input type="radio" name="service" value="'.$service['service_id'].'"><br><br>';
+              echo '<label for="service-'.$service['service_id'].' class="labelclass" ">'.$service['serv_description'].'</label>';
+              echo '<input type="radio" class="servclass" name="service" value="'.$service['service_id'].'"><br><br>';
             }
-            echo '<label for="service_date">Appointment Date</label>';
+            echo '<label for="service_date" id="s23">Appointment Date</label>';
             echo '<select name="service_date">';
             foreach ($available_times as $key=>$available_time) {
-              echo '<option value='.$key.'>'.$available_time.'</option>';
+              echo '<option value='.$key.' >'.$available_time.'</option>';
             }
             echo '</select><br><br>';
             echo '<textarea placeholder="Customer Comments" rows="4" cols="50" maxlength="200" name="cust_comments" form="reserveform"></textarea><br><br>';
