@@ -1,26 +1,21 @@
 <?php
 session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $functions->readInventory();
+    $_SESSION['exotic_inventory'] = readInventory();
 }
-require_once('functions.php');
 require_once('open-db.php');
-$functions = new functions();
-$services = $functions->get_services($db);
-$appointments = $functions->get_appointments($db);
-$functions->submit_service_req($db, $_POST);
+include('functions.php');
+
+$services = get_services($db);
+$appointments = get_appointments($db);
+submit_service_req($db, $_POST);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>BHowdy's Exotic Car Dealership</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-</head>
+<?php include('templates/header.php'); ?>
 <body>
 <main id="container" class="cards">
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/navbar.php'); ?>
     <section id="main-container">
         <?php
         echo "Your service appointment has been scheduled. You will now be redirected to the homepage.";

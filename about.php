@@ -1,20 +1,9 @@
-<?php
-session_start();
-if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $functions->readInventory();
-}
-?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>BHowdy's Exotic Car Dealership</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-</head>
+<?php include('templates/header.php'); ?>
 <body>
 <main id="container" class="cards">
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/navbar.php'); ?>
     <section id="main-container">
         <h2>About Us</h2>
         <h3>Nicholas Spencer</h3>

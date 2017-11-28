@@ -1,26 +1,20 @@
 <?php
 session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $functions->readInventory();
+    $_SESSION['exotic_inventory'] = readInventory();
 }
-require_once('functions.php');
 require_once('open-db.php');
-$functions = new functions();
+include('functions.php');
 if (isset($_SESSION['user'])) {
-  $services = $functions->get_user_serv_history($db, $_SESSION['user']);
+  $services = get_user_serv_history($db, $_SESSION['user']);
 }
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>BHowdy's Exotic Car Dealership</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-</head>
+<?php include('templates/header.php'); ?>
 <body>
 <main id="container" class="cards">
-    <?php include('templates/header.php'); ?>
+    <?php include('templates/navbar.php'); ?>
     <section id="main-container">
         <?php
         if (!isset($_SESSION['login-type']) || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny') {
