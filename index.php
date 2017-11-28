@@ -1,21 +1,20 @@
 <?php
 session_start();
-require_once('functions.php');
-$functions = new functions();
-
+require_once('open-db.php');
+include('functions.php');
 if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $functions->readInventory();
+    $_SESSION['exotic_inventory'] = readInventory();
 }
 if (isset($_POST['Method']) && isset($_SESSION['exotic_inventory'])) {
-    $functions->add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']);
+    add($_POST['firstname'],$_POST['lastname'],$_POST['date'],$_SESSION['exotic_inventory'][$_POST['CarIndex']]['car']);
 }
 if (isset($_POST['CarIndex'])) {
-    $_SESSION['exotic_inventory'] = $functions->carStatusChange($_SESSION['exotic_inventory'], $_POST['CarIndex'], "Reserved");
+    $_SESSION['exotic_inventory'] = carStatusChange($_SESSION['exotic_inventory'], $_POST['CarIndex'], "Reserved");
 }
 ?>
 <!DOCTYPE html>
 <html>
-<?php include('templates/navbar.php'); ?>
+<?php include('templates/header.php'); ?>
     <body>
         <main id="container" class="cards">
             <?php

@@ -7,7 +7,7 @@
  */
 echo "<head>";
 echo "<title>BHowdy's Exotic Car Dealership</title>";
-echo "<link rel="stylesheet" type="text/css" href="css/normalize.css">";
-echo "<link rel="stylesheet" type="text/css" href="css/main.css">";
-echo "<link rel="shortcut icon" href="images/favicon.ico" />";
+echo '<link rel="stylesheet" type="text/css" href="css/normalize.css">';
+echo '<link rel="stylesheet" type="text/css" href="css/main.css">';
+echo '<link rel="shortcut icon" href="images/favicon.ico" />';
 echo "</head>";

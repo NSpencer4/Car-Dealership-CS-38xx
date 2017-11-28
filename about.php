@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php include('templates/navbar.php'); ?>
+<?php include('templates/header.php'); ?>
 <body>
 <main id="container" class="cards">
     <?php include('templates/navbar.php'); ?>

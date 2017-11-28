@@ -1,11 +1,9 @@
 <?php
 session_start();
-require_once('functions.php');
-$functions = new functions();
 ?>
 <!DOCTYPE html>
 <html>
-<?php include('templates/navbar.php'); ?>
+<?php include('templates/header.php'); ?>
 <body>
 <main id="container" class="cards">
     <?php include('templates/navbar.php'); ?>

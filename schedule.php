@@ -1,18 +1,17 @@
 <?php
 session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
-    $_SESSION['exotic_inventory'] = $functions->readInventory();
+    $_SESSION['exotic_inventory'] = readInventory();
 }
-require_once('functions.php');
 require_once('open-db.php');
-$functions = new functions();
-$services = $functions->get_services($db);
-$appointments = $functions->get_appointments($db);
-$available_times = $functions->get_appointment_times($db, $appointments);
+include('functions.php');
+$services = get_services($db);
+$appointments = get_appointments($db);
+$available_times = get_appointment_times($db, $appointments);
 ?>
 <!DOCTYPE html>
 <html>
-<?php include('templates/navbar.php'); ?>
+<?php include('templates/header.php'); ?>
 <body>
 <main id="container" class="cards">
     <?php include('templates/navbar.php'); ?>
