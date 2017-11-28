@@ -155,11 +155,11 @@ if (!isset($_SESSION['exotic_inventory'])) {
                 echo '<br/>';
                 ?>
                 <label for="cust_password" class="login_label"  id='s3'>Password</label>
-                <input type="cust_password" name="cust_password" value="" class='login_input' id='s4'><br />
+                <input type="password" name="cust_password" value="" class='login_input' id='s4'><br />
                 <?php
                 if ($_SESSION['login-type'] == "new"){
                     echo "<label for='cust_password2' class='login_label'  id='s5'>Retype Password</label>";
-                    echo "<input type='cust_password' name='cust_password2' class='login_input' id='s6' value=''><br /><br />";
+                    echo "<input type='password' name='cust_password2' class='login_input' id='s6' value=''><br /><br />";
 
                     echo "<label for='cust_name' class='login_label'  id='s7'>Name</label>";
                     echo "<input type='text' name='cust_name' value='$cust_name' class='login_input'  id='s8' required><br />";
