@@ -3,7 +3,7 @@
 
     function verify_login($db, $cust_email, $cust_password)
     {
-      $query = "SELECT cust_password FROM customers WHERE cust_email = :cust_email";
+      $query = "SELECT cust_password FROM Customers WHERE cust_email = :cust_email";
       $statement = $db->prepare($query);
       $statement->bindValue(':cust_email', $cust_email);
       $statement->execute();
@@ -15,7 +15,7 @@
 
     function existing_cust_email($db, $cust_email)
     {
-      $query = "SELECT COUNT(cust_email) FROM customers WHERE cust_email = :cust_email";
+      $query = "SELECT COUNT(cust_email) FROM Customers WHERE cust_email = :cust_email";
       $statement = $db->prepare($query);
       $statement->bindValue(':cust_email', $cust_email);
       $statement->execute();
@@ -25,7 +25,7 @@
     }
 
     function addUser($db, $cust_email, $cust_password, $cust_name, $cust_address, $cust_state, $cust_zip, $cust_city, $cust_phone) {
-      $query = "INSERT INTO customers (cust_email, cust_password, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_phone)
+      $query = "INSERT INTO Customers (cust_email, cust_password, cust_name, cust_address, cust_city, cust_state, cust_zip, cust_phone)
                 VALUES (:cust_email, :cust_password, :cust_name, :cust_address, :cust_city, :cust_state, :cust_zip, :cust_phone)";
       $statement = $db->prepare($query);
       $statement->bindValue(':cust_email', $cust_email);
