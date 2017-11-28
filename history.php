@@ -18,6 +18,7 @@ if (isset($_SESSION['user'])) {
     <section id="main-container">
         <?php
         if (!isset($_SESSION['login-type']) || !isset($_SESSION['login']) || $_SESSION['login'] == 'deny') {
+            echo "</br>";
             echo "You are not logged in. Please login and try again. Redirecting to the homepage in 3 seconds.";
             header( "refresh:3; url=login_start.php" );
         } else {
