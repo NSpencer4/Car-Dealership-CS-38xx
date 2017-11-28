@@ -3,7 +3,8 @@ session_start();
 if (!isset($_SESSION['exotic_inventory'])) {
     $_SESSION['exotic_inventory'] = readInventory();
 }
-
+require_once('open-db.php');
+include('functions.php');
 
 $services = get_services($db);
 $appointments = get_appointments($db);

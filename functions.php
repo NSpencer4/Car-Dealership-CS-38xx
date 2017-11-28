@@ -57,8 +57,8 @@ function get_appointment_times($db, $appointments) {
  * @return sucess which is the status of the insert to the database
  */
 function submit_service_req($db, $form) {
-  $appointments = $this->get_appointments($db);
-  $available_times = $this->get_appointment_times($db, $appointments);
+  $appointments = get_appointments($db);
+  $available_times = get_appointment_times($db, $appointments);
   $query = "INSERT INTO Appointments (service_id, appt_time, cust_email, cust_comments)
         VALUES (:service_id, :appt_time, :cust_email, :cust_comments)";
   $statement = $db->prepare($query);
