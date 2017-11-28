@@ -26,7 +26,7 @@ $available_times = get_appointment_times($db, $appointments);
             echo '<form action="confirmation.php" id="reserveform" method="POST">';
             foreach ($services as $service) {
               echo '<label for="service-'.$service['service_id'].'" class="labelclass">'.$service['serv_description'].'</label>';
-              echo '<input type="radio" class="servclass" name="service-'.$service['service_id'].'" value="'.$service['service_id'].'"><br><br>';
+              echo '<input type="radio" id="service-'.$service['service_id'].'" class="servclass" name="service" value="'.$service['service_id'].'"><br><br>';
             }
             echo '<label for="service_date" id="s23">Appointment Date</label>';
             echo '<select name="service_date">';
