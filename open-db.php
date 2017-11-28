@@ -1,11 +1,11 @@
 <?php
 $servername = 'localhost';
-$cust_email = 'root';
-$cust_password = '';
+$username = 'root';
+$password = '';
 $dbname = 'bhowdy';
 
 try {
-    $db = new PDO("mysql:host=$servername;dbname=$dbname", $cust_email, $cust_password);
+    $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 } catch (PDOException $e) {
     $error_message = $e->getMessage();
     echo $error_message;
