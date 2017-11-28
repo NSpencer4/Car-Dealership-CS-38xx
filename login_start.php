@@ -18,13 +18,12 @@ if (!isset($_SESSION['exotic_inventory'])) {
     <section id="main-container">
 
         <form action="login.php" method="post">
-          <input type="radio" name="type" value="existing" id="existing">
-          <label for="existing">I have an account.</label><br>
+          <input type="radio" name="type"  value="existing" id="existing">
+          <label class="spacing" for="existing" >I have an account.</label><br>
           <input type="radio" name="type" value="new" id="new" checked>
-          <label for="new">I need to create an account</label><br>
-          <input type="submit" value="Go">
+          <label id="s21" class="spacing" for="new">I need to create an account</label><br>
+          <input id="input1" type="submit" value="Go">
         </form>
-
         </section>
         <?php include('templates/footer.php'); ?>
     </main>

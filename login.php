@@ -154,39 +154,36 @@ if (!isset($_SESSION['exotic_inventory'])) {
         </header>
         <main>
             <form action="" method="post">
-                <label for="cust_email" class="login_label">cust_email</label>
+              <label for="cust_email" class="login_label"  id='s1' >Email</label>
                 <?php
-                echo "<input type='text' name='cust_email' value=$cust_email>";
-                if ($_SESSION['login-type'] == "new") {
-                    echo '<input type="submit" name="check_cust_email" value="Check cust_email Availability" id="check_button">';
-                }
+                echo "<input type='text' name='cust_email' class='login_input' id='s2' value=$cust_email > ";
                 echo '<br/>';
                 ?>
-                <label for="cust_password" class="login_label">cust_password</label>
-                <input type="cust_password" name="cust_password" value=""><br />
+                <label for="cust_password" class="login_label"  id='s3'>Password</label>
+                <input type="cust_password" name="cust_password" value="" class='login_input' id='s4'><br />
                 <?php
                 if ($_SESSION['login-type'] == "new"){
-                    echo "<label for='cust_password2' class='login_label'>Retype cust_password</label>";
-                    echo "<input type='cust_password' name='cust_password2' value=''><br /><br />";
+                    echo "<label for='cust_password2' class='login_label'  id='s5'>Retype Password</label>";
+                    echo "<input type='cust_password' name='cust_password2' class='login_input' id='s6' value=''><br /><br />";
 
-                    echo "<label for='cust_name' class='login_label'>Name</label>";
-                    echo "<input type='text' name='cust_name' value='$cust_name' required><br />";
-                    echo "<label for='cust_address' class='login_label'>Street Address</label>";
-                    echo "<input type='text' name='cust_address' value='$cust_address' required ><br />";
-                    echo "<label for='cust_state' class='login_label'>State</label>";
-                    echo "<input type='text' name='cust_state' value='$cust_state' required ><br />";
-                    echo "<label for='cust_city' class='login_label'>City</label>";
-                    echo "<input type='text' name='cust_city' value='$cust_city' required ><br />";
-                    echo "<label for='cust_zip' class='login_label'>Zip</label>";
-                    echo "<input type='text' name='cust_zip' value='$cust_zip' required ><br />";
-                    echo "<label for='cust_phone' class='login_label'>Phone Number</label>";
-                    echo "<input type='text' name='cust_phone' value='$cust_phone' required ><br />";
+                    echo "<label for='cust_name' class='login_label'  id='s7'>Name</label>";
+                    echo "<input type='text' name='cust_name' value='$cust_name' class='login_input'  id='s8' required><br />";
+                    echo "<label for='cust_address' class='login_label'  id='s9'>Street Address</label>";
+                    echo "<input type='text' name='cust_address' value='$cust_address' class='login_input'  id='s10' required ><br />";
+                    echo "<label for='cust_state' class='login_label'  id='s11'>State</label>";
+                    echo "<input type='text' name='cust_state' value='$cust_state' class='login_input'  id='s13' required ><br />";
+                    echo "<label for='cust_city' class='login_label'  id='s14'>City</label>";
+                    echo "<input type='text' name='cust_city' value='$cust_city' class='login_input'  id='s15' required ><br />";
+                    echo "<label for='cust_zip' class='login_label'  id='s16'>Zip</label>";
+                    echo "<input type='text' name='cust_zip' value='$cust_zip' class='login_input'  id='s17' required ><br />";
+                    echo "<label for='cust_phone' class='login_label'  id='s18'>Phone Number</label>";
+                    echo "<input type='text' name='cust_phone' value='$cust_phone' class='login_input'  id='s19' required ><br />";
                     $submit_value = 'Create Account';
                 }
                 else {
                     $submit_value = 'Log In';
                 }
-                echo "<input type='submit' value='$submit_value'>";
+                echo "<input type='submit' id='s20' value='$submit_value'>";
                 ?>
             </form>
     </section>
