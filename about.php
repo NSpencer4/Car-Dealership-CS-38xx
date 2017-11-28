@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once('open-db.php');
+include('functions.php');
+if (!isset($_SESSION['exotic_inventory'])) {
+    $_SESSION['exotic_inventory'] = readInventory();
+}
+?>
 <!DOCTYPE html>
 <html>
 <?php include('templates/header.php'); ?>

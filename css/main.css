@@ -193,36 +193,30 @@ footer {
 }
 
 #existing{
-  margin-left: -23%;
+  margin-left: -5.2%;
+  width: 2%;
+  margin-top: 20px;
 }
 
 #new{
-  margin-left: -23%;
+  width: 2%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .spacing {
-  margin: 0 -220px 0 -220px;
-
 }
 
-#s21{
-  margin-right: -285px;
-
-}
 .login_label{
-
 padding-right: 1px;
 height: 10px;
 width: 150px;
-/*margin-top: 1%;*/
 }
 
 .login_input{
   margin-bottom: 5px;
   height: 25px;
-  /*width: 150px;*/
-
-    width: 190px;
+  width: 190px;
 }
 
 #input1{
@@ -284,14 +278,11 @@ width: 150px;
 
 #s20{
   height: 35px;
-    width: 150px;
-
+  width: 150px;
 }
 
 .servclass{
-  margin-right: -500px;
-  margin: 0 -220px 0 -220px;
-
+  width: 2%;
 }
 
 #s23{
